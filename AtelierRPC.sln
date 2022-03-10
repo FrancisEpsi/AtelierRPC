@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Client", "AtelierRPC\Client.vbproj", "{8B6292C8-5852-49AA-A787-C352FD1C2A18}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Server", "Server\Server.vbproj", "{B74DCBD2-DAC8-4112-A4E2-0B77DF24D16F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B6292C8-5852-49AA-A787-C352FD1C2A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B6292C8-5852-49AA-A787-C352FD1C2A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B6292C8-5852-49AA-A787-C352FD1C2A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B6292C8-5852-49AA-A787-C352FD1C2A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B74DCBD2-DAC8-4112-A4E2-0B77DF24D16F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B74DCBD2-DAC8-4112-A4E2-0B77DF24D16F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B74DCBD2-DAC8-4112-A4E2-0B77DF24D16F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B74DCBD2-DAC8-4112-A4E2-0B77DF24D16F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81A2A64B-D3BF-475F-B4E1-588E7A647CC7}
+	EndGlobalSection
+EndGlobal
