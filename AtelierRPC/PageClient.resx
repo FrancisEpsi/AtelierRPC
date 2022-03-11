@@ -57,12 +57,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Label1.Text" xml:space="preserve">
-    <value>Charlotte fait nous un formulaire ici à l'aide la la boite à outils.
-Il doit y avoir les champs suivant:
-- Une TextBox "Nom
-- Une TextBox "Prenom"
-- Une NumericUpDown "Age"
-Penses a modifier les propriétées de chaque contrôle, notamment la propriété "Name"</value>
-  </data>
 </root>
