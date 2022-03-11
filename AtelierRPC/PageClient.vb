@@ -2,10 +2,6 @@
 Public Class PageClient
     Dim client As New ClientRPC
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
     Sub Submit()
         Dim leFormulaire = New Formulaire
         With leFormulaire

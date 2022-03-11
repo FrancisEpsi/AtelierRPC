@@ -5,6 +5,10 @@ Public Class PageServeur
     Dim serveur As New ServerRPC(Me)
     Dim DataList As New List(Of Formulaire)
 
+    ''' <summary>
+    ''' Affiche de manière sécurisé (sur le thread principal via un delegate) les données d'un formulaire reçu (Nom, Prénom, Age) dans le tableau
+    ''' </summary>
+    ''' <param name="DonneeFormulaire"></param>
     Public Sub SafeSetData(ByVal DonneeFormulaire As Object)
         Dim dSetData As New OneObjectParamDelegate(AddressOf SetData)
         Me.Invoke(dSetData, DonneeFormulaire)
@@ -16,6 +20,9 @@ Public Class PageServeur
         RefreshFormulaireList()
     End Sub
 
+    ''' <summary>
+    ''' Rafraichit le tableau des formulaires reçu grâce à la variable DataList permettant de les stockés
+    ''' </summary>
     Sub RefreshFormulaireList()
         DataGridView1.Rows.Clear()
         For Each formulaire As Formulaire In DataList
