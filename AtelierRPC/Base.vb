@@ -77,17 +77,26 @@ Module Base
     End Class
 
     Public Class ServerRPC
+
+        Public SenderForm As PageServeur = Nothing
+
         Dim socketListenner As New Socket(SocketType.Stream, ProtocolType.Tcp)
         Dim interfaceEcoute As New IPEndPoint(IPAddress.Any, 3426)
 
         Dim threadListenning As Threading.Thread
         Dim Listenning As Boolean = False
 
+        Sub New(ByVal sender As PageServeur)
+            Me.SenderForm = sender
+        End Sub
+
         Public Sub StartServer()
+            socketListenner = New Socket(SocketType.Stream, ProtocolType.Tcp)
+            socketListenner.Bind(interfaceEcoute)
+            socketListenner.Listen(1)
             Listenning = True
             threadListenning = New Threading.Thread(AddressOf Listen)
             threadListenning.Start()
-
         End Sub
 
         Public Sub StopServer()
@@ -113,8 +122,27 @@ Module Base
                 Dim buffer(4096) As Byte
                 Dim BytesReceived As Integer = sockSession.Receive(buffer)
                 Dim JsonStr As String = System.Text.Encoding.UTF8.GetString(buffer)
-                JsonStr.Substring(0, BytesReceived) ' On enleve les caractères inutiles
-                Debug.WriteLine("Formulaire JSON reçu : '" & JsonStr & "'")
+
+                Dim trimJsonStr As String = Nothing
+                Dim charcounter As Integer = 1
+                For Each c As Char In JsonStr
+                    If charcounter <= BytesReceived Then
+                        trimJsonStr = trimJsonStr & c
+                        charcounter = charcounter + 1
+                    End If
+                Next
+                Debug.WriteLine("Formulaire JSON reçu : '" & trimJsonStr & "'")
+                'Debug.WriteLine(BytesReceived & " octets reçu")
+
+                Dim DonneeFormulaire As New Formulaire
+                If DonneeFormulaire.LoadJson(trimJsonStr) = True Then
+                    Debug.WriteLine("Nom:" & vbTab & DonneeFormulaire.Nom)
+                    Debug.WriteLine("Prénom:" & vbTab & DonneeFormulaire.Prenom)
+                    Debug.WriteLine("Âge:" & vbTab & DonneeFormulaire.Age)
+                    SenderForm.SafeSetData(DonneeFormulaire)
+                Else
+                    Debug.WriteLine("Impossible de désérialiser le JSON reçu !")
+                End If
             Catch ex As Exception
                 Debug.WriteLine("[X] ReadRequest() : " & ex.Message)
             End Try
